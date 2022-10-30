@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/fullstack-shopping/My-Work/issues"
   },
-  "homepage": "https://github.com/fullstack-shopping/My-Work#readme"
+  "homepage": "https://github.com/fullstack-shopping/My-Work#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "bootstrap-icons": "^1.9.1",
+    "jquery": "^3.6.1"
+  }
 }

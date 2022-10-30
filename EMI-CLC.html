@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI CALCULATOR</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+
+
+    <style>
+        #lblAmount,
+        #lblYear,
+        #lblRate {
+            border: 2px solid black;
+            width: 100px;
+            height: 30px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        
+        .box {
+            border: 2px solid black;
+            box-shadow: 4px 4px 3px gray;
+            padding: 30px;
+        }
+    </style>
+
+    <script>
+        var amount, years, rate;
+
+        function AmountChange() {
+            amount = document.getElementById("rangeAmount").value;
+            document.getElementById("lblAmount").innerHTML = `&#8377; ${amount}`;
+        }
+
+        function YearChange() {
+            years = document.getElementById("rangeYear").value;
+            document.getElementById("lblYear").innerHTML = `${years}`;
+        }
+
+        function RateChange() {
+            rate = document.getElementById("rangeRate").value;
+            document.getElementById("lblRate").innerHTML = `${rate}%`;
+        }
+
+        function Calculate() {
+            var p = parseFloat(amount);
+            var n = parseInt(years) * 12;
+            var r = parseFloat(rate) / 12 / 100;
+            var EMI = p * r / (1 - (Math.pow(1 / (1 + r), n)));
+            document.getElementById("lblResult").innerHTML = `
+               You EMI amount is &#8377; <b>${Math.round(EMI)}</b> per month
+            `;
+        }
+    </script>
+</head>
+
+<body class="container-fluid">
+    <h1 class="text-center">Personal Loan Emi Calculator</h1>
+    <div class="box">
+        <div class="mt-4">
+            <div class="row">
+                <div class="col">
+                    Amount you need<span id="lblAmount">&#8377; 45000/-</span>
+                </div>
+                <div class="col">
+                    for <span id="lblYear">5</span>Years
+                </div>
+                <div class="col">
+                    Intrest Rate <span id="lblRate">16.5</span>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="input-group">
+                        <span>50000/-</span>
+                        <input type="range" id="rangeAmount" class="form-range" onchange="AmountChange()" value="50000" min="50000" max="500000">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <span>1</span>
+                        <input type="range" id="rangeYear" class="form-range" onchange="YearChange()" value="1" min="1" max="5">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <span>10.00%</span>
+                        <input type="range" id="rangeRate" class="form-range" onchange="RateChange()" value="10.00" min="10.00" max="21.1" step="0.1">
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col text-center">
+                        <button onclick="Calculate()" class="btn btn-primary">Calculate</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <p id="lblResult"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p>Desined by: Shailendra Gautam</p>
+
+</body>
+
+</html>
