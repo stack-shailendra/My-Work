@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Resturent</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <script>
+        function OrderClick() {
+            document.getElementById("lblName").innerHTML = document.getElementById("txtname").value;
+
+            document.getElementById("lblMobile").innerHTML = document.getElementById("txtMobile").value;
+
+            var mealName = "";
+            var mealCost = 0;
+            var adOnName = "";
+            var adOnCost = 0;
+
+            wingsRadio = document.getElementById("optwings");
+
+            biryaniRadio = document.getElementById("optbiryani");
+
+            if (wingsRadio.checked) {
+                mealName = wingsRadio.value;
+                mealCost = 120;
+            }
+            if (biryaniRadio.checked) {
+                mealNamebiryaniRadio.value;
+                mealCost = 199;
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+    <header>
+        <img src="../Images/hotwings.jpg" width="100%" height="250">
+    </header>
+    <section>
+        <div class="accordion" id="orderForm">
+            <!--Customer Details-->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="btn btn-danger w-100 mt-2" data-bs-target="#customer" data-bs-toggle="collapse">Customer Details</button>
+                </div>
+
+                <div class="accordion-collapse collapse " id="customer" data-bs-parent="#orderForm">
+                    <div class="accordion-body">
+                        <dl>
+                            <dt>Customer Name</dt>
+                            <dd><input type="text" id="txtname" class="form-control"></dd>
+                            <dt>Mobile</dt>
+                            <dd><input type="text" class="form-control" id="txtMobile"></dd>
+                        </dl>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--Meal Details-->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#meal" data-bs-toggle="collapse">Select Your Meal</button>
+                </div>
+                <div class="accordion-collapse collapse" id="meal" data-bs-parent="#orderForm">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../Images/hotwings.jpg" class="card-img-top" height="250">
+                                    <div class="card-header">
+                                        <h2>Hot Wings </h2>
+                                    </div>
+                                    <div class="card-footer">
+                                        <h3><input type="radio" class="form-check-input" id="optwings" value="hot wings" name="meal">&#8377; 120/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../Images/biryani.jpg" class="card-img-top" height="250">
+                                    <div class="card-header">
+                                        <h2>Hot Biryani </h2>
+                                    </div>
+                                    <div class="card-footer">
+                                        <h3><input type="radio" class="form-check-input" id="optbiryani" value="hot biryani" name="meal">&#8377; 199/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Ads on-->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="btn btn-danger w-100" data-bs-target="#adon" data-bs-toggle="collapse">AD's ON</button>
+                </div>
+                <div class="accordion-collapse collapse" id="adon" data-bs-parent="#orderForm">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../Images/periperi.jpg" class="card-img-top" height="250">
+                                    <div class="card-header">
+                                        <h2>Peri Peri </h2>
+                                    </div>
+                                    <div class="card-footer">
+                                        <h3><input type="checkbox" class="form-check-input" id="optperipeeri" value="peri peri" name="meal">&#8377; 120/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card">
+                                    <img src="../Images/burger.jpg" class="card-img-top" height="250">
+                                    <div class="card-header">
+                                        <h2>Hot Biryani </h2>
+                                    </div>
+                                    <div class="card-footer">
+                                        <h3><input type="checkbox" class="form-check-input" id="optburger" value="burger" name="meal">&#8377; 99/-</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#bill" onclick="OrderClick()">Place Order</button>
+        <div class="modal fade" id="bill">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-primary">
+                        <h3>Your Bill Summary</h3>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-dark">
+                        <dl class="row">
+                            <dt class="col3">Customer</dt>
+                            <dd class="col9" id="lblName"></dd>
+                            <dt class="col3">Mobile</dt>
+                            <dd class="col9" id="lblMobile"></dd>
+                            <dt class="col3">Meals Name</dt>
+                            <dd class="col9" id="lblMeal"></dd>
+                            <dt class="col3">AD's On</dt>
+                            <dd class="col9" id="lblAdon"></dd>
+                            <dt class="col3">Total</dt>
+                            <dd class="col9" id="lblTotal"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
